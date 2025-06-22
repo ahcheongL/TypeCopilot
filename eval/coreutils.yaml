@@ -1,0 +1,2226 @@
+
+- program: basename
+  suite: coreutils
+  bc_path: bc/basename.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/basename%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/basename%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: basenc
+  suite: coreutils
+  bc_path: bc/basenc.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/basenc%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/basenc%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: cat
+  suite: coreutils
+  bc_path: bc/cat.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/cat%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/cat%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: chcon
+  suite: coreutils
+  bc_path: bc/chcon.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/chcon%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/chcon%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: chmod
+  suite: coreutils
+  bc_path: bc/chmod.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/chmod%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/chmod%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: chown
+  suite: coreutils
+  bc_path: bc/chown.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/chown%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/chown%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: chroot
+  suite: coreutils
+  bc_path: bc/chroot.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/chroot%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/chroot%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: cksum
+  suite: coreutils
+  bc_path: bc/cksum.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/cksum%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/cksum%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: comm
+  suite: coreutils
+  bc_path: bc/comm.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/comm%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/comm%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: cp
+  suite: coreutils
+  bc_path: bc/cp.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/cp%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/cp%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: csplit
+  suite: coreutils
+  bc_path: bc/csplit.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/csplit%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/csplit%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: cut
+  suite: coreutils
+  bc_path: bc/cut.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/cut%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/cut%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: date
+  suite: coreutils
+  bc_path: bc/date.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/date%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/date%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: dd
+  suite: coreutils
+  bc_path: bc/dd.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/dd%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/dd%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: df
+  suite: coreutils
+  bc_path: bc/df.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/df%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/df%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: dircolors
+  suite: coreutils
+  bc_path: bc/dircolors.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/dircolors%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/dircolors%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: dirname
+  suite: coreutils
+  bc_path: bc/dirname.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/dirname%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/dirname%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: du
+  suite: coreutils
+  bc_path: bc/du.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/du%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/du%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: echo
+  suite: coreutils
+  bc_path: bc/echo.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/echo%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/echo%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: env
+  suite: coreutils
+  bc_path: bc/env.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/env%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/env%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: expand
+  suite: coreutils
+  bc_path: bc/expand.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/expand%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/expand%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: expr
+  suite: coreutils
+  bc_path: bc/expr.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/expr%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/expr%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: factor
+  suite: coreutils
+  bc_path: bc/factor.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/factor%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/factor%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: fmt
+  suite: coreutils
+  bc_path: bc/fmt.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/fmt%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/fmt%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: fold
+  suite: coreutils
+  bc_path: bc/fold.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/fold%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/fold%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: getlimits
+  suite: coreutils
+  bc_path: bc/getlimits.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/getlimits%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/getlimits%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: groups
+  suite: coreutils
+  bc_path: bc/groups.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/groups%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/groups%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: head
+  suite: coreutils
+  bc_path: bc/head.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/head%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/head%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: hostid
+  suite: coreutils
+  bc_path: bc/hostid.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/hostid%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/hostid%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: id
+  suite: coreutils
+  bc_path: bc/id.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/id%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/id%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: join
+  suite: coreutils
+  bc_path: bc/join.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/join%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/join%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: kill
+  suite: coreutils
+  bc_path: bc/kill.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/kill%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/kill%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: link
+  suite: coreutils
+  bc_path: bc/link.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/link%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/link%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: ln
+  suite: coreutils
+  bc_path: bc/ln.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/ln%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/ln%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: logname
+  suite: coreutils
+  bc_path: bc/logname.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/logname%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/logname%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: ls
+  suite: coreutils
+  bc_path: bc/ls.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/ls%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/ls%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: make-prime-list
+  suite: coreutils
+  bc_path: bc/make-prime-list.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/make-prime-list%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/make-prime-list%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: mkdir
+  suite: coreutils
+  bc_path: bc/mkdir.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/mkdir%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/mkdir%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: mkfifo
+  suite: coreutils
+  bc_path: bc/mkfifo.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/mkfifo%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/mkfifo%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: mknod
+  suite: coreutils
+  bc_path: bc/mknod.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/mknod%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/mknod%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: mktemp
+  suite: coreutils
+  bc_path: bc/mktemp.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/mktemp%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/mktemp%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: mv
+  suite: coreutils
+  bc_path: bc/mv.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/mv%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/mv%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: nice
+  suite: coreutils
+  bc_path: bc/nice.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/nice%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/nice%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: nl
+  suite: coreutils
+  bc_path: bc/nl.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/nl%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/nl%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: nohup
+  suite: coreutils
+  bc_path: bc/nohup.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/nohup%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/nohup%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: nproc
+  suite: coreutils
+  bc_path: bc/nproc.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/nproc%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/nproc%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: numfmt
+  suite: coreutils
+  bc_path: bc/numfmt.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/numfmt%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/numfmt%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: od
+  suite: coreutils
+  bc_path: bc/od.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/od%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/od%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: paste
+  suite: coreutils
+  bc_path: bc/paste.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/paste%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/paste%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: pathchk
+  suite: coreutils
+  bc_path: bc/pathchk.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/pathchk%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/pathchk%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: pinky
+  suite: coreutils
+  bc_path: bc/pinky.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/pinky%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/pinky%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: pr
+  suite: coreutils
+  bc_path: bc/pr.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/pr%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/pr%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: printenv
+  suite: coreutils
+  bc_path: bc/printenv.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/printenv%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/printenv%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: printf
+  suite: coreutils
+  bc_path: bc/printf.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/printf%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/printf%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: ptx
+  suite: coreutils
+  bc_path: bc/ptx.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/ptx%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/ptx%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: pwd
+  suite: coreutils
+  bc_path: bc/pwd.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/pwd%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/pwd%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: readlink
+  suite: coreutils
+  bc_path: bc/readlink.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/readlink%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/readlink%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: realpath
+  suite: coreutils
+  bc_path: bc/realpath.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/realpath%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/realpath%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: rm
+  suite: coreutils
+  bc_path: bc/rm.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/rm%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/rm%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: rmdir
+  suite: coreutils
+  bc_path: bc/rmdir.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/rmdir%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/rmdir%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: runcon
+  suite: coreutils
+  bc_path: bc/runcon.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/runcon%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/runcon%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: seq
+  suite: coreutils
+  bc_path: bc/seq.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/seq%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/seq%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: shred
+  suite: coreutils
+  bc_path: bc/shred.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/shred%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/shred%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: shuf
+  suite: coreutils
+  bc_path: bc/shuf.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/shuf%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/shuf%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: sleep
+  suite: coreutils
+  bc_path: bc/sleep.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/sleep%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/sleep%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: sort
+  suite: coreutils
+  bc_path: bc/sort.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/sort%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/sort%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: split
+  suite: coreutils
+  bc_path: bc/split.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/split%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/split%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: stat
+  suite: coreutils
+  bc_path: bc/stat.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/stat%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/stat%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: stty
+  suite: coreutils
+  bc_path: bc/stty.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/stty%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/stty%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: sum
+  suite: coreutils
+  bc_path: bc/sum.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/sum%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/sum%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: sync
+  suite: coreutils
+  bc_path: bc/sync.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/sync%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/sync%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: tac
+  suite: coreutils
+  bc_path: bc/tac.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/tac%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/tac%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: tail
+  suite: coreutils
+  bc_path: bc/tail.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/tail%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/tail%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: tee
+  suite: coreutils
+  bc_path: bc/tee.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/tee%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/tee%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: test
+  suite: coreutils
+  bc_path: bc/test.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/test%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/test%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: timeout
+  suite: coreutils
+  bc_path: bc/timeout.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/timeout%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/timeout%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: touch
+  suite: coreutils
+  bc_path: bc/touch.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/touch%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/touch%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: tr
+  suite: coreutils
+  bc_path: bc/tr.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/tr%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/tr%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: truncate
+  suite: coreutils
+  bc_path: bc/truncate.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/truncate%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/truncate%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: tsort
+  suite: coreutils
+  bc_path: bc/tsort.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/tsort%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/tsort%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: tty
+  suite: coreutils
+  bc_path: bc/tty.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/tty%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/tty%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: uname
+  suite: coreutils
+  bc_path: bc/uname.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/uname%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/uname%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: unexpand
+  suite: coreutils
+  bc_path: bc/unexpand.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/unexpand%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/unexpand%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: uniq
+  suite: coreutils
+  bc_path: bc/uniq.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/uniq%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/uniq%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: unlink
+  suite: coreutils
+  bc_path: bc/unlink.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/unlink%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/unlink%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: uptime
+  suite: coreutils
+  bc_path: bc/uptime.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/uptime%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/uptime%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: users
+  suite: coreutils
+  bc_path: bc/users.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/users%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/users%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: who
+  suite: coreutils
+  bc_path: bc/who.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/who%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/who%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+- program: whoami
+  suite: coreutils
+  bc_path: bc/whoami.bc
+  codeql_path: bc/coreutils/codeql
+  codeql_global_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+        not gv.isInMacroExpansion() and
+        not gv.getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        gv.getLocation().toString().matches("%src/whoami%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from StackVariable lv
+    where
+        not lv.getFunction().isInline() and
+        not lv.isInMacroExpansion() and
+        not lv.getName().matches("(unnamed%") and 
+        not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+        not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+        lv.getLocation().toString().matches("%src/whoami%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()

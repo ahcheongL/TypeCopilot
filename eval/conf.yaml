@@ -1,0 +1,34 @@
+- program: nginx
+  suite: nginx
+  bc_path: bc/nginx.bc
+  codeql_path: bc/nginx/codeql
+  codeql_global_query: |
+    import cpp
+    from StackVariable lv
+    where
+      not lv.getFunction().isInline() and
+      not lv.isInMacroExpansion() and
+      not lv.getName().matches("(unnamed%") and 
+      not lv.getUnspecifiedType().getName().matches("(unnamed%") and
+      not lv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+      lv.getLocation().toString().matches("%src/%")
+    select lv, lv.getFunction(), lv.getType(), lv.getUnspecifiedType()
+  codeql_local_query: |
+    import cpp
+    from GlobalVariable gv
+    where
+      not gv.isInMacroExpansion() and
+      not gv.getName().matches("(unnamed%") and
+      not gv.getUnspecifiedType().getName().matches("(unnamed%") and
+      not gv.getUnspecifiedType().getName().matches("struct <unnamed>%") and
+      gv.getLocation().toString().matches("%src/%")
+    select gv, gv.getType(), gv.getUnspecifiedType()
+- program: openssl
+  suite: openssl
+  bc_path: bc/openssl.bc
+  codeql_path: bc/openssl/codeql
+- program: kernel
+  suite: kernel
+  bc_path: bc/linux.bc
+  codeql_path: bc/linux-5.15.167/codeql
+  worklist: false

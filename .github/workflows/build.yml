@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    paths:
+      - ".github/workflows/**"
+      - "src/**"
+      - "CMakeLists.txt"
+  pull_request:
+    paths:
+      - "src/**"
+      - "CMakeLists.txt"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache
+        id: cache-llvm
+        uses: actions/cache@v3
+        with:
+          path: ~/llvm-project
+          key: ${{ runner.os }}-llvm
+      - name: Setup LLVM
+        if: steps.cache-llvm.outputs.cache-hit != 'true'
+        run: |
+          mkdir ~/llvm-project
+          wget -qO- https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.4/llvm-project-16.0.4.src.tar.xz | tar -xJf - --strip-components 1 -C ~/llvm-project
+          cd ~/llvm-project
+          cmake -S llvm -B build -G 'Unix Makefiles' -DLLVM_ENABLE_PROJECTS='clang;lld' -DCMAKE_BUILD_TYPE=Release -DLLVM_USE_LINKER=gold
+          cmake --build ./build -j$(nproc)
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: |
+          make LLVM_DIR=~/llvm-project/build
