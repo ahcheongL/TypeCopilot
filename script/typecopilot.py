@@ -8,32 +8,12 @@ import subprocess
 # bc_path: bitcode path
 # workspace: current workspace path
 # typesrc: type source
-def run(bc_path, res_path, workspace, typesrc, baseline=False, worklist=True):
+def run(bc_path, output_fn):
     # no bitcode, extract
     # if typesrc == "comb" or typesrc == "di":  # comb mode needs debug info
     #     bc_file = prog + "-di.bc"
     # else:
     #     bc_file = prog + ".bc"
-
-    # no run result
-    if not os.path.exists(res_path):
-        run_cmd = f"make run BC={bc_path} TYPE_SRC={typesrc} BASELINE={baseline} DUMP_TYPE=true WL={worklist}"
-
-        with open(res_path, "w") as f:
-            subprocess.run(
-                [run_cmd],
-                cwd=workspace,
-                shell=True,
-                stdout=subprocess.DEVNULL,
-                stderr=f,
-            )
-
-
-# prog: program name
-# bc_path: bitcode path
-# workspace: current workspace path
-# typesrc: type source
-def coverage(bc_path, output_fn):
 
     TA_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,14 +22,15 @@ def coverage(bc_path, output_fn):
         "-load-pass-plugin",
         f"{TA_DIR}/build/libTypeCopilot.so",
         "-passes=typecopilot",
-        "-output-path",
-        output_fn,
+        "-dump-type=true",
+        f"-output-path={output_fn}",
+        "-type-src=comb",
         bc_path,
         "-o",
         "/dev/null",
     ]
 
-    if os.path.exists(output_fn):
+    if output_fn != "" and os.path.exists(output_fn):
         if os.path.isdir(output_fn):
             print(
                 f"Error: {output_fn} is a directory. Please provide a valid file path."
@@ -61,13 +42,17 @@ def coverage(bc_path, output_fn):
 
     process = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    if not os.path.exists(output_fn) or process.returncode != 0:
+    if output_fn == "":
+        print(process.stderr.decode())
+    elif not os.path.exists(output_fn) or process.returncode != 0:
         print(f"Error: Failed to generate {output_fn}.")
+        print(f"Command: {' '.join(cmd)}")
         print("Stdout:", process.stdout.decode())
         print("Stderr:", process.stderr.decode())
         return
 
-    print(f"TypeCopilot result saved to {output_fn}")
+    if output_fn != "":
+        print(f"TypeCopilot result saved to {output_fn}")
     return
 
 
@@ -77,10 +62,18 @@ if __name__ == "__main__":
         "--bc_path", "-b", type=str, required=True, help="Path to the bitcode file"
     )
     parser.add_argument(
-        "--output", "-o", type=str, required=True, help="Path to the result file"
+        "--output",
+        "-o",
+        type=str,
+        required=False,
+        help="Path to the result file",
+        default="",
     )
 
     args = parser.parse_args()
+
+    if args.output != "":
+        args.output = os.path.abspath(args.output)
 
     run(
         args.bc_path,

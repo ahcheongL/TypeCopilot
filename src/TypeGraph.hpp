@@ -255,11 +255,20 @@ class TypeGraph {
 
   /// print the type of a value
   void dumpType(Function *scope, Value *key, TypeSet *value) {
-    if (!key->hasName()) return;
+    if (!key->hasName()) {
+      errs() << "Value has no name, skipping dump.\n";
+      errs() << "Key : " << *key << ", Value : ";
+      if (value) value->dump();
+      errs() << "\n";
+      errs() << "In function: " << (scope ? scope->getName() : "(global)")
+             << "\n";
+      return;
+    }
 
     llvm::raw_ostream                    *os = &errs();
     std::unique_ptr<llvm::raw_fd_ostream> file_os;
-    if (!OutputPath.empty()) {
+
+    if (OutputPath != "") {
       std::error_code EC;
       file_os = std::make_unique<llvm::raw_fd_ostream>(
           OutputPath, EC, llvm::sys::fs::OF_Append);
