@@ -21,8 +21,8 @@ def count_struct(filename):
     with open(filename, "r") as f:
         for line in f:
             # get non-anonymous structs
-            # if line.startswith("%struct") and not line.startswith("%struct.anon"):
-            if line.startswith("%struct"):
+            # if line.starts_with("%struct") and not line.starts_with("%struct.anon"):
+            if line.starts_with("%struct"):
                 if not struct_start:
                     struct_start = True
 
@@ -34,7 +34,7 @@ def count_struct(filename):
                 structset.add(unique_struct)
 
             # end of struct section
-            if struct_start and not line.startswith("%"):
+            if struct_start and not line.starts_with("%"):
                 break
     return count, len(structset), len(has_dup_struct_set)
 

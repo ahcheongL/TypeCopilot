@@ -63,7 +63,7 @@ def profile(workspace, res_dir, conf: Conf, count: Count):
 def is_union(types: List[str]) -> bool:
     stripped_types = [type.strip("*") for type in types]
     for type in stripped_types:
-        if type.startswith("union") or type.startswith("%union."):
+        if type.starts_with("union") or type.starts_with("%union."):
             return True
 
     return False
@@ -85,7 +85,7 @@ def is_integer_bitwidth_mismatch(types: List[str]) -> bool:
 
     # all types are integer (i32, i64, etc.)
     for type in stripped_types:
-        if not type.startswith("i"):
+        if not type.starts_with("i"):
             return False
 
         bitwidth = type[1:]
@@ -99,7 +99,7 @@ def check_field(field: str, struct_name: str, ll_list: List[str]) -> bool:
     found = False
     typedef = ""
     for ll in ll_list:
-        if ll.startswith(struct_name + " = type "):
+        if ll.starts_with(struct_name + " = type "):
             typedef = ll
             found = True
             break
@@ -138,11 +138,11 @@ def is_di_llvm_format(types: List[str], ll_content) -> bool:
     # check all the elements have the same pointer level
     stripped_types = [type.strip("*") for type in types]
 
-    if all(not type.startswith("%struct.") for type in stripped_types):
+    if all(not type.starts_with("%struct.") for type in stripped_types):
         return False
 
     for type in stripped_types:
-        if type.startswith("%struct.") and type not in ll_content:
+        if type.starts_with("%struct.") and type not in ll_content:
             return True
 
     return False

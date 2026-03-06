@@ -34,19 +34,19 @@ def transform_llvm_type(type):
     if unptred_type == "ptr":
         type = type.replace("ptr", "void*")
 
-    if type.startswith("%struct."):
+    if type.starts_with("%struct."):
         type = type.replace("%struct.", "")
-    if type.startswith("%union."):
+    if type.starts_with("%union."):
         type = type.replace("%union.", "")
 
-    if type.startswith("enum "):
+    if type.starts_with("enum "):
         type = type.replace("enum ", "")
-    if type.startswith("struct "):
+    if type.starts_with("struct "):
         type = type.replace("struct ", "")
-    if type.startswith("union "):
+    if type.starts_with("union "):
         type = type.replace("union ", "")
 
-    if unptred_type.startswith("<") and unptred_type.endswith(">"):
+    if unptred_type.starts_with("<") and unptred_type.endswith(">"):
         type = type.split(" ")[2]
         type = type.replace(">", "") + "*"
 
