@@ -245,7 +245,7 @@ class TypeAnalyzer {
     log("[INFO] done\n");
 
     // dump all types
-    if (DumpType.getValue()) tg->dumpAllType();
+    if (DumpType.getValue()) tg->dumpAllType(module, llHelper);
 
     // calculate coverage
     if (Coverage.getValue()) { tg->coverage(module); }

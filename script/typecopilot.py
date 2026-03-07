@@ -34,6 +34,7 @@ def run(bc_path):
         "-o",
         "/dev/null",
     ]
+    # print(" ".join(cmd))
 
     if os.path.exists(output_fn):
         if os.path.isdir(output_fn):
@@ -43,7 +44,6 @@ def run(bc_path):
             return
 
         os.remove(output_fn)
-        return
 
     process = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -53,6 +53,9 @@ def run(bc_path):
         print("Stdout:", process.stdout.decode())
         print("Stderr:", process.stderr.decode())
         return
+    
+    # print(f"stdout: {process.stdout.decode()}")
+    # print(f"stderr: {process.stderr.decode()}")
 
     print(f"TypeCopilot result saved to {output_fn}")
     return

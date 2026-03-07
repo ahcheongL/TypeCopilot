@@ -31,7 +31,7 @@ endif ()
 #===============================================================================
 # 3. ADD THE TARGET
 #===============================================================================
-add_library(TypeCopilot SHARED src/main.cpp)
+add_library(TypeCopilot SHARED src/main.cpp src/TypeGraph.cpp src/LLVMHelper.cpp)
 
 # Allow undefined symbols in shared objects on Darwin (this is the default
 # behaviour on Linux)
