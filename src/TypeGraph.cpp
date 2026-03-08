@@ -342,8 +342,11 @@ void TypeGraph::dumpAllType(llvm::Module *module, LLVMHelper *llhelper) {
 
     (*os) << struct_type_name << ":";
     for (uint32_t idx = 0; idx < struct_type->getNumElements(); idx++) {
-      string field_type_name = combHelper->getDIStructField(struct_type, idx);
-      (*os) << field_type_name << ",";
+      auto   field_name_pair = combHelper->getDIStructField(struct_type, idx);
+      string field_name = field_name_pair.first;
+      string field_type_name = field_name_pair.second;
+
+      (*os) << "(" << field_name << ":" << field_type_name << "),";
 
       while (field_type_name.back() == '*') {
         field_type_name.pop_back();

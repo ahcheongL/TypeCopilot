@@ -99,10 +99,11 @@ class TypeAlias {
                 tyHelper->isOpaque(typeName) && i == gep.getNumOperands() - 1) {
               if (TypeSrc.getValue() == "di") {
                 auto diHelper = static_cast<DebugInfoHelper *>(llHelper);
-                typeName = diHelper->getDIStructField(structType, index);
+                typeName = diHelper->getDIStructField(structType, index).second;
               } else if (TypeSrc.getValue() == "comb") {
                 auto combHelper = static_cast<CombHelper *>(llHelper);
-                typeName = combHelper->getDIStructField(structType, index);
+                typeName =
+                    combHelper->getDIStructField(structType, index).second;
               }
             }
           }

@@ -291,8 +291,8 @@ bool DebugInfoHelper::hasDebugInfo(Module &M) {
   return false;
 }
 
-string DebugInfoHelper::getDIStructField(StructType *structType,
-                                         uint64_t    index) {
+pair<string, string> DebugInfoHelper::getDIStructField(StructType *structType,
+                                                       uint64_t    index) {
   // iterate over all DICompositeType
   auto pos = structMap.find(structType);
 
@@ -313,18 +313,19 @@ string DebugInfoHelper::getDIStructField(StructType *structType,
   //     }
   // }
 
-  if (pos == structMap.end()) { return ""; }
+  if (pos == structMap.end()) { return {"", ""}; }
 
   auto diStructType = static_cast<DICompositeType *>(pos->second);
   auto elements = diStructType->getElements();
-  if (index >= elements.size()) { return ""; }
+  if (index >= elements.size()) { return {"", ""}; }
 
   auto element = elements[index];
   if (auto *derivedType = dyn_cast<DIDerivedType>(element)) {
+    auto field_name = derivedType->getName();
     auto baseTypeName = getDITypeName(derivedType->getBaseType());
-    return di_to_ir_type(baseTypeName);
+    return {field_name.str(), di_to_ir_type(baseTypeName)};
   }
-  return "";
+  return {"", ""};
 }
 
 string DebugInfoHelper::getDITypeName(DIType *ditype) {
@@ -667,7 +668,8 @@ bool CombHelper::hasDebugInfo(Module &M) {
   return diHelper->hasDebugInfo(M);
 }
 
-string CombHelper::getDIStructField(StructType *structType, uint64_t index) {
+pair<string, string> CombHelper::getDIStructField(StructType *structType,
+                                                  uint64_t    index) {
   // iterate over all DICompositeType
   auto pos = structMap.find(structType);
 
@@ -687,16 +689,18 @@ string CombHelper::getDIStructField(StructType *structType, uint64_t index) {
   //     }
   // }
 
-  if (pos == structMap.end()) { return ""; }
+  if (pos == structMap.end()) { return {"", ""}; }
 
   auto diStructType = static_cast<DICompositeType *>(pos->second);
   auto elements = diStructType->getElements();
-  if (index >= elements.size()) { return ""; }
+  if (index >= elements.size()) { return {"", ""}; }
 
   auto element = elements[index];
+
   if (auto *derivedType = dyn_cast<DIDerivedType>(element)) {
+    auto field_name = derivedType->getName();
     auto baseTypeName = diHelper->getDITypeName(derivedType->getBaseType());
-    return di_to_ir_type(baseTypeName);
+    return {field_name.str(), di_to_ir_type(baseTypeName)};
   }
-  return "";
+  return {"", ""};
 }

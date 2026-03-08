@@ -49,7 +49,7 @@ class DebugInfoHelper : public LLVMHelper {
 
   bool hasDebugInfo(Module &M);
 
-  string getDIStructField(StructType *structType, uint64_t index);
+  pair<string, string> getDIStructField(StructType *structType, uint64_t index);
 
   string getDITypeName(DIType *ditype);
 };
@@ -81,5 +81,6 @@ class CombHelper : public LLVMHelper {
 
   bool hasDebugInfo(Module &M);
 
-  string getDIStructField(StructType *structType, uint64_t index);
+  // return field name and field type name
+  pair<string, string> getDIStructField(StructType *structType, uint64_t index);
 };
