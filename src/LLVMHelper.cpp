@@ -7,13 +7,16 @@
 
 using namespace llvm;
 using namespace std;
-map<string, string> type_trans_map = {
-    {"bool", "i1"},           {"short", "i16"},
-    {"char", "i8"},           {"int", "i32"},
-    {"long", "i64"},          {"long long", "i64"},
-    {"unsigned char", "i8"},  {"unsigned short", "i16"},
-    {"unsigned long", "i64"}, {"unsigned long long", "i64"},
-    {"unsigned int", "i32"},
+
+map<string, string> type_trans_map1 = {{"unsigned char", "i8"},
+                                       {"unsigned short", "i16"},
+                                       {"unsigned long", "i64"},
+                                       {"unsigned long long", "i64"},
+                                       {"unsigned int", "i32"}};
+
+map<string, string> type_trans_map2 = {
+    {"bool", "i1"}, {"short", "i16"}, {"char", "i8"},
+    {"int", "i32"}, {"long", "i64"},  {"long long", "i64"},
 };
 
 string di_to_ir_type(string &di_type) {
@@ -28,7 +31,7 @@ string di_to_ir_type(string &di_type) {
 
   size_t pos;
 
-  for (auto &[key, value] : type_trans_map) {
+  for (auto &[key, value] : type_trans_map1) {
     auto pos = ir_type.find(key);
     while (pos != string::npos) {
       ir_type.replace(pos, key.length(), value);
@@ -36,10 +39,18 @@ string di_to_ir_type(string &di_type) {
     }
   }
 
-  pos = ir_type.find("struct");
+  for (auto &[key, value] : type_trans_map2) {
+    auto pos = ir_type.find(key);
+    while (pos != string::npos) {
+      ir_type.replace(pos, key.length(), value);
+      pos = ir_type.find(key, pos + value.length());
+    }
+  }
+
+  pos = ir_type.find("struct ");
   while (pos != string::npos) {
-    ir_type.replace(pos, 6, "%struct.");
-    pos = ir_type.find("struct", pos + 8);
+    ir_type.replace(pos, 7, "%struct.");
+    pos = ir_type.find("struct ", pos + 8);
   }
 
   pos = ir_type.find("enum");
