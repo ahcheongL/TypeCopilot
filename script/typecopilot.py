@@ -53,7 +53,7 @@ def run(bc_path):
         print("Stdout:", process.stdout.decode())
         print("Stderr:", process.stderr.decode())
         return
-    
+
     # print(f"stdout: {process.stdout.decode()}")
     # print(f"stderr: {process.stderr.decode()}")
 

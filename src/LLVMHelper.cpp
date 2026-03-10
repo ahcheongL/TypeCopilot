@@ -396,7 +396,16 @@ string DebugInfoHelper::getDITypeName(DIType *ditype) {
     } break;
     case dwarf::DW_TAG_subroutine_type: {
       auto *subroutine = dyn_cast<DISubroutineType>(ditype);
-      name = subroutine->getName();
+      name = "[";
+      auto typeArray = subroutine->getTypeArray();
+      for (int i = 0; i < typeArray.size(); ++i) {
+        auto type = typeArray[i];
+        auto type_name = getDITypeName(type);
+        name += type_name;
+        if (i != typeArray.size() - 1) name += ", ";
+      }
+      name += "]";
+
     } break;
     default:
       errs() << "[ERR] should handle " << tag << "\n";
@@ -629,6 +638,8 @@ void CombHelper::initialize(Module *module, TypeGraph *tg) {
     if (!subprogram) {
       auto type = func.getFunctionType();
       auto retType = type->getReturnType();
+      llvm::errs() << "probe 0, func: " << func.getName()
+                   << ", retType: " << tyHelper.getTypeName(retType) << "\n";
       tg->put(nullptr, funcValue, tyHelper.getTypeName(retType), true);
     } else {
       auto *subroutinetype = subprogram->getType();
@@ -649,6 +660,11 @@ void CombHelper::initialize(Module *module, TypeGraph *tg) {
           // type from DI subprogram
           auto param = func.getArg(i - 1);
           auto di_type_name = diHelper->getDITypeName(type);
+          llvm::errs() << "probe 1, func: " << func.getName()
+                       << ", param: " << param->getName()
+                       << ", di_type_name: " << di_type_name << "\n, ditype: ";
+          type->print(llvm::errs());
+          llvm::errs() << "\n";
           tg->put(&func, param, di_to_ir_type(di_type_name));
 
           // type from DI local var
