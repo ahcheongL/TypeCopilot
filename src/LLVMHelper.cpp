@@ -26,18 +26,40 @@ string di_to_ir_type(string &di_type) {
     ptr_level++;
   }
 
-  // general types, in the table
-  auto iter = type_trans_map.find(ir_type);
-  if (iter != type_trans_map.end()) {
-    ir_type = iter->second;
-  } else {
-    // di_type starts with "struct"
-    if (ir_type.find("struct") == 0) {
-      ir_type = "\%struct." + ir_type.substr(7);
-    } else if (ir_type.find("enum") == 0) {
-      ir_type = "i32";
+  size_t pos;
+
+  for (auto &[key, value] : type_trans_map) {
+    auto pos = ir_type.find(key);
+    while (pos != string::npos) {
+      ir_type.replace(pos, key.length(), value);
+      pos = ir_type.find(key, pos + value.length());
     }
   }
+
+  pos = ir_type.find("struct");
+  while (pos != string::npos) {
+    ir_type.replace(pos, 6, "%struct.");
+    pos = ir_type.find("struct", pos + 8);
+  }
+
+  pos = ir_type.find("enum");
+  while (pos != string::npos) {
+    ir_type.replace(pos, 4, "i32");
+    pos = ir_type.find("enum", pos + 4);
+  }
+
+  // // general types, in the table
+  // auto iter = type_trans_map.find(ir_type);
+  // if (iter != type_trans_map.end()) {
+  //   ir_type = iter->second;
+  // } else {
+  //   // di_type starts with "struct"
+  //   if (ir_type.find("struct") == 0) {
+  //     ir_type = "\%struct." + ir_type.substr(7);
+  //   } else if (ir_type.find("enum") == 0) {
+  //     ir_type = "i32";
+  //   }
+  // }
 
   ir_type += string(ptr_level, '*');
   return ir_type;
