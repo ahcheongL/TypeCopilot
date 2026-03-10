@@ -396,15 +396,15 @@ string DebugInfoHelper::getDITypeName(DIType *ditype) {
     } break;
     case dwarf::DW_TAG_subroutine_type: {
       auto *subroutine = dyn_cast<DISubroutineType>(ditype);
-      name = "[";
+      name = "(";
       auto typeArray = subroutine->getTypeArray();
       for (int i = 0; i < typeArray.size(); ++i) {
         auto type = typeArray[i];
         auto type_name = getDITypeName(type);
         name += type_name;
-        if (i != typeArray.size() - 1) name += ", ";
+        if (i != typeArray.size() - 1) name += ",";
       }
-      name += "]";
+      name += ")";
 
     } break;
     default:
