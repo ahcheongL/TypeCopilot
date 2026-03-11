@@ -106,6 +106,17 @@ class TypeSet {
     return *next(types.begin(), index);
   }
 
+  void remove_invalid_types() {
+    set<string> valid_types;
+    for (auto &type : types) {
+      if (type.empty()) { continue; }
+      if (type[0] == '*') { continue; }
+      valid_types.insert(type);
+    }
+    types = valid_types;
+    return;
+  }
+
   typename set<string>::iterator begin() {
     return types.begin();
   }

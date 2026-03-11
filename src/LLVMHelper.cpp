@@ -405,16 +405,19 @@ string DebugInfoHelper::getDITypeName(DIType *ditype) {
       // else
       name = basename + "*";
     } break;
-    case dwarf::DW_TAG_structure_type:
-      name = "struct " + ditype->getName().str();
+    case dwarf::DW_TAG_structure_type: {
+      std::string struct_name = ditype->getName().str();
+
+      if (struct_name != "") { name = "struct " + struct_name; }
       break;
+    }
     case dwarf::DW_TAG_typedef:
       if (RESOLVE_TYPEDEF) {
         auto *derived = dyn_cast<DIDerivedType>(ditype);
         auto  basetype = derived->getBaseType();
         if (basetype) {
           name = getDITypeName(basetype);
-          if (name == "") { name = ditype->getName().str(); }
+          // if (name == "") { name = ditype->getName().str(); }
         } else {
           name = ditype->getName().str();
         }

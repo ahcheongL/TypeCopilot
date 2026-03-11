@@ -240,6 +240,7 @@ void TypeGraph::dumpType(Function *scope, Value *key, TypeSet *value,
                          llvm::raw_ostream     *os) {
   if (!key->hasName()) { return; }
 
+  value->remove_invalid_types();
   value->erasePtr();
   if (value->empty()) { return; }
 
@@ -252,6 +253,7 @@ void TypeGraph::dumpType(Function *scope, Value *key, TypeSet *value,
 
   if (!value->empty()) {
     set<string>::iterator iter = value->begin();
+
     (*os) << *iter;
     while (++iter != value->end())
       (*os) << ", " << *iter;
