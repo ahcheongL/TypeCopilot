@@ -8,18 +8,18 @@
 using namespace llvm;
 using namespace std;
 
-map<string, string> type_trans_map1 = {{"unsigned char", "i8"},
-                                       {"unsigned short", "i16"},
-                                       {"unsigned long", "i64"},
-                                       {"unsigned long long", "i64"},
-                                       {"unsigned int", "i32"}};
-
-map<string, string> type_trans_map2 = {
-    {"bool", "i1"}, {"short", "i16"}, {"char", "i8"},
-    {"int", "i32"}, {"long", "i64"},  {"long long", "i64"},
+map<string, string> type_trans_map = {
+    {"unsigned char", "i8"},  {"unsigned short", "i16"},
+    {"unsigned long", "i64"}, {"unsigned long long", "i64"},
+    {"unsigned int", "i32"},  {"bool", "i1"},
+    {"short", "i16"},         {"char", "i8"},
+    {"int", "i32"},           {"long", "i64"},
+    {"long long", "i64"},
 };
 
 string di_to_ir_type(string &di_type) {
+  llvm::errs() << "di_to_ir_type called with di_type: " << di_type << "\n";
+
   string ir_type = di_type;
 
   // trim the ending multiple *
@@ -31,21 +31,21 @@ string di_to_ir_type(string &di_type) {
 
   size_t pos;
 
-  for (auto &[key, value] : type_trans_map1) {
-    auto pos = ir_type.find(key);
-    while (pos != string::npos) {
-      ir_type.replace(pos, key.length(), value);
-      pos = ir_type.find(key, pos + value.length());
-    }
-  }
+  // for (auto &[key, value] : type_trans_map1) {
+  //   auto pos = ir_type.find(key);
+  //   while (pos != string::npos) {
+  //     ir_type.replace(pos, key.length(), value);
+  //     pos = ir_type.find(key, pos + value.length());
+  //   }
+  // }
 
-  for (auto &[key, value] : type_trans_map2) {
-    auto pos = ir_type.find(key);
-    while (pos != string::npos) {
-      ir_type.replace(pos, key.length(), value);
-      pos = ir_type.find(key, pos + value.length());
-    }
-  }
+  // for (auto &[key, value] : type_trans_map2) {
+  //   auto pos = ir_type.find(key);
+  //   while (pos != string::npos) {
+  //     ir_type.replace(pos, key.length(), value);
+  //     pos = ir_type.find(key, pos + value.length());
+  //   }
+  // }
 
   pos = ir_type.find("struct ");
   while (pos != string::npos) {
@@ -53,11 +53,17 @@ string di_to_ir_type(string &di_type) {
     pos = ir_type.find("struct ", pos + 8);
   }
 
-  pos = ir_type.find("enum");
+  pos = ir_type.find("union ");
   while (pos != string::npos) {
-    ir_type.replace(pos, 4, "i32");
-    pos = ir_type.find("enum", pos + 4);
+    ir_type.replace(pos, 6, "%union.");
+    pos = ir_type.find("union ", pos + 7);
   }
+
+  // pos = ir_type.find("enum");
+  // while (pos != string::npos) {
+  //   ir_type.replace(pos, 4, "i32");
+  //   pos = ir_type.find("enum", pos + 4);
+  // }
 
   // // general types, in the table
   // auto iter = type_trans_map.find(ir_type);
@@ -371,9 +377,10 @@ string DebugInfoHelper::getDITypeName(DIType *ditype) {
   switch (tag) {
     case dwarf::DW_TAG_base_type:
       name = (ditype->getName() == "_Bool") ? "bool" : ditype->getName().str();
+      name = type_trans_map[name];
       break;
     case dwarf::DW_TAG_enumeration_type:
-      name = "enum " + ditype->getName().str();
+      name = "i32";
       break;
     case dwarf::DW_TAG_array_type: {
       auto *composite = dyn_cast<DICompositeType>(ditype);
@@ -671,8 +678,6 @@ void CombHelper::initialize(Module *module, TypeGraph *tg) {
     if (!subprogram) {
       auto type = func.getFunctionType();
       auto retType = type->getReturnType();
-      llvm::errs() << "probe 0, func: " << func.getName()
-                   << ", retType: " << tyHelper.getTypeName(retType) << "\n";
       tg->put(nullptr, funcValue, tyHelper.getTypeName(retType), true);
     } else {
       auto *subroutinetype = subprogram->getType();
@@ -693,11 +698,6 @@ void CombHelper::initialize(Module *module, TypeGraph *tg) {
           // type from DI subprogram
           auto param = func.getArg(i - 1);
           auto di_type_name = diHelper->getDITypeName(type);
-          llvm::errs() << "probe 1, func: " << func.getName()
-                       << ", param: " << param->getName()
-                       << ", di_type_name: " << di_type_name << "\n, ditype: ";
-          type->print(llvm::errs());
-          llvm::errs() << "\n";
           tg->put(&func, param, di_to_ir_type(di_type_name));
 
           // type from DI local var
